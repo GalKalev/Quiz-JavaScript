@@ -1,0 +1,122 @@
+/* .header{
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    background-color: lightgray;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    z-index:100;
+}
+
+.left-section{
+    display:flex;
+    align-items: center;
+    margin-left:10px;
+    background-color: lightpink;
+}
+
+.middle-section{
+    flex:1;
+    margin-left: 70px;
+    margin-right: 35px;
+    max-width:600px;
+    display: flex;
+    align-items: center;
+    background-color: lightblue;
+    position: relative;
+}
+
+.filter-button{
+    font-size:20px;
+    margin-left:10px;
+}
+
+.search-bar{
+    flex:1;
+    height:40px;
+    font-size:16px;
+    padding-left:10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: inset 1px 2px 3x rgba(0,0,0,0.5);
+    width:0;
+    margin-left:60px;
+    z-index:1;
+
+}
+
+.search-bar::placeholder{
+    font-size:20px;
+}
+
+.search-button{
+    height: 44px;
+    width:66px;
+    background-color: gray;
+    border-width: 1px;
+    border-color:black;
+    margin-left: 4px;
+    align-items: center;
+    border-radius: 22px;
+}
+
+.search-icon{
+    height: 24px;
+}
+
+.right-section{
+    width:240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-color: lightpink;
+}
+
+.menue-icon{
+    height: 40px;
+
+}
+
+.sign-in-button, .log-in-button{
+    font-size:15px;
+    height: 40px;
+    width: 90px;
+    border-radius: 45px;
+    border:1px solid green;
+    background-color:rgb(162, 255, 162)
+}
+
+.sign-in-button{
+    
+} */
+
+.filter-button-test{
+    font-size:16px;
+    margin-left:51px;
+    height: 43px;
+    background-color: white;
+    border-radius: 20px;
+    padding-right:55px;
+    padding-left: 20px;
+    box-shadow: inset 1px 2px 3x rgba(0,0,0,0.5);
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.input-bar-test{
+    height:40px;
+    font-size:16px;
+    padding-left:10px;
+    border: 1px solid gray;
+    border-left:none;
+    border-radius: 20px;
+    /* box-shadow: inset 1px 2px 3x rgba(0,0,0,0.5); */
+    margin-left:-50px;
+}
