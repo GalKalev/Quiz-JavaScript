@@ -1,0 +1,24 @@
+.starting-screen-container{
+    /* background-color: lightblue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align:center;
+}
+
+.quiz-title{
+    font-size:60px;
+    margin-top:50px;
+    margin-bottom: 60px;
+    background-color: lightpink;
+}
+.instructions{
+    font-size:30px;
+    margin-top:0;
+    margin-bottom: 100px;
+}
+
+.start-button{
+    font-size: 70px;
+}

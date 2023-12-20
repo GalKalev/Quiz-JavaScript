@@ -97,26 +97,9 @@
     
 } */
 
-.filter-button-test{
-    font-size:16px;
-    margin-left:51px;
-    height: 43px;
-    background-color: white;
-    border-radius: 20px;
-    padding-right:55px;
-    padding-left: 20px;
-    box-shadow: inset 1px 2px 3x rgba(0,0,0,0.5);
-    border: 1px solid gray;
-    cursor: pointer;
-}
-
-.input-bar-test{
-    height:40px;
-    font-size:16px;
-    padding-left:10px;
-    border: 1px solid gray;
-    border-left:none;
-    border-radius: 20px;
-    /* box-shadow: inset 1px 2px 3x rgba(0,0,0,0.5); */
-    margin-left:-50px;
+.test-image{
+position: relative;
+background-color: white;;
+  width: 300px;
+  clip-path: circle();
 }

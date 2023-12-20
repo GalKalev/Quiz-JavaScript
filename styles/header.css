@@ -7,7 +7,7 @@
     top:0;
     left:0;
     right:0;
-    background-color: transparent;
+    background-color: rgb(201, 201, 201);
     border-bottom-width: 1px;
     border-bottom-style: solid;
     z-index:100;
@@ -18,6 +18,10 @@
     align-items: center;
     margin-left:10px;
     /* background-color: lightpink; */
+}
+
+.logo-name{
+    color:white
 }
 
 .middle-section{
@@ -90,7 +94,8 @@
 .menue-icon{
     height: 40px;
     cursor: pointer;
-
+    background-color:white;
+    clip-path: circle();
 }
 
 .sign-in-button, .log-in-button{
