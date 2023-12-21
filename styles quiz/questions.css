@@ -1,0 +1,130 @@
+.quiz-container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* position: relative; */
+    /* background-color: orange; */
+}
+
+
+
+.timer-container{
+    /* background-color: red; */
+
+}
+
+.question-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* background-color: lightpink; */
+    width:90%;
+}
+
+.timer{
+    font-size:80px;
+    margin-left:20px;
+    background-color: transparent;
+    width:150px;
+    border: none;
+    text-align:center ;
+}
+
+.question-title{
+    font-size:60px;
+    margin-top:50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.question-options{
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 90px;
+}
+
+.left-section, .right-section{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    /* background-color: lightpink; */
+}
+
+.left-section{
+    margin-right: 40px;
+}
+
+.radio-option{
+    transform: scale(3);
+    position: relative;
+    top:-4px;
+    vertical-align: middle;
+    margin-right: 20px;
+    
+    /* display:inline-block; */
+    
+}
+
+
+.submit-answer-button{
+    font-size:50px;
+    width:230px;
+    border:5px solid rgb(44, 197, 252);
+    background-color: rgb(128, 218, 251);;
+    border-radius: 20px;
+    transition: 0.15s;
+}
+
+.submit-answer-button:hover{
+    background-color: rgb(77, 202, 247);
+}
+
+
+.submit-answer-button:active{
+    background-color: rgb(44, 197, 252);
+}
+
+
+/* @media (max-width: 620){
+    .quiz-container{
+        background-color: lightpink;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .timer{
+        color:red;
+    }
+} */
+
+
+@media(max-width:750px){
+    .quiz-container{
+        background-color: lightpink;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+
+/* @media(min-width:751px) and (max-width:999px){
+    .quiz-container{
+        background-color: orange;
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media(min-width:1000px){
+    .quiz-container{
+        background-color: lightgreen;
+        display: flex;
+        flex-direction: row;
+    }
+} */

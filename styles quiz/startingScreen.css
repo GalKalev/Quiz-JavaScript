@@ -9,9 +9,10 @@
 
 .quiz-title{
     font-size:60px;
+    font-weight: bold;
     margin-top:50px;
     margin-bottom: 60px;
-    background-color: lightpink;
+    /* background-color: lightpink; */
 }
 .instructions{
     font-size:30px;
@@ -21,4 +22,14 @@
 
 .start-button{
     font-size: 70px;
+    border:none;
+    width: 220px;
+    height: 160px;
+    border-radius: 80px;
+    background-color: rgb(71, 156, 241);
+    cursor: pointer;
+}
+
+.start-button:hover{
+    opacity: 0.8;
 }

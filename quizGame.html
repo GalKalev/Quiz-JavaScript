@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Quiz Game</title>
 
         <link rel="stylesheet" href="styles quiz/general.css">
         <link rel="stylesheet" href="styles quiz/startingScreen.css">
+        <link rel="stylesheet" href="styles quiz/questions.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Roboto:wght@500;700&display=swap">
     </head>
 
     <body>
-        <div class="starting-screen-container">
+        <!-- <div class="starting-screen-container">
             <p class="quiz-title">
-                Choose as Many Correct Answers As You Can
+                Quiz JavaScript
             </p>
 
             <p class="instructions">
@@ -18,28 +22,66 @@
             </p>
 
             <button class="start-button">
-                start
+                START
             </button>
-        </div>
+
+            
+        </div> -->
         
 
-        <!-- <div class="quiz-container">
+        <div class="quiz-container">
            
-            <div class="timer">
-                1:00
-            </div>
+
+            <div class="question-container">
+                <p class="question-title">
+                    Which planet has the most moons?
+                </p>
+
+                <form>
+
+                    <div class="question-options">
     
-            <div class="question-title">
-                Which planet has the most moons?
-            </div>
+                        <div class="left-section">
     
-            <div class="question-options">
-                <input type="radio">1.
-                <input type="radio">2. Saturn
-                <input type="radio">3.
-                <input type="radio">4.
+                            <label>
+                                <input type="radio" class="radio-option" name="options">1. Mars
+                            </label>
+            
+                            <label>
+                                <input type="radio" class="radio-option" name="options">2. Saturn
+                            </label>
+    
+                        </div>
+        
+                        <div class="right-section">
+    
+                            <label>
+                                <input type="radio" class="radio-option" name="options">3. Jupiter
+                            </label>
+            
+                            <label>
+                                <input type="radio" class="radio-option" name="options">4. Pluto
+                            </label>
+        
+                        </div>
+                      
+                    </div>
+        
+                    <button class="submit-answer-button"> SUBMIT</button>
+    
+                </form>
+
             </div>
-        </div> -->
+           
+            <div class="timer-container">
+
+                <div class="timer">
+                    1:00
+                </div>
+
+            </div>
+
+        </div>
        
         <script></script>
     </body>
