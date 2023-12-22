@@ -1,0 +1,9 @@
+.out-of-time-wrapper{
+    background-color: transparent;
+}
+
+.out-of-time-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}

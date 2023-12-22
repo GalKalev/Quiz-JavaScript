@@ -23,13 +23,17 @@
 .start-button{
     font-size: 70px;
     border:none;
-    width: 220px;
+    width: 240px;
     height: 160px;
-    border-radius: 80px;
+    border-radius: 20px;
     background-color: rgb(71, 156, 241);
     cursor: pointer;
 }
 
 .start-button:hover{
-    opacity: 0.8;
+    color:white;
+}
+
+@media(max-width:750px){
+    
 }
