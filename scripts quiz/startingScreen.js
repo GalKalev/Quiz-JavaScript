@@ -17,11 +17,11 @@ let answeredQuestions = [];
 
 let answeredCorrectlyCounter = 0;
 
-// function settingAnswers(question){
+let timer =  5;
 
-    
+let setTimerInterval;
 
-// }
+// const setTimerInterval =  setInterval(updateTimer,1000);
 
 let activateQuizHTML = '';
 
@@ -68,20 +68,29 @@ function checkAnswer(answer, question){
     console.log(`answer: ${answer}`);
     console.log(`correct answer:${question.correctAnswer}`);
     if(answer.value === question.correctAnswer){
-        console.log('correct');
         answeredCorrectlyCounter++;
 
-    } else{
-        console.log('wrong');
     }
+}
 
+function updateTimer(){
+    console.log(timer);
+    if(timer >= 0){
+        document.querySelector('.js-timer').innerHTML = timer;
+        timer--;
+    } else{
+        clearInterval(setTimerInterval);
+        document.body.innerHTML = `over`
+    }
+    
 }
 
 
 function quizScreen(){
     let question = setQuestion();
-
-    if(question){
+    // const setTimer = setInterval(updateTimer,1000);
+   
+    if(question && timer > 0){
         activateQuizHTML = `
         <div class="quiz-container">
             
@@ -128,32 +137,35 @@ function quizScreen(){
     
         <div class="timer-container">
 
-            <div class="timer">
-                1:00
+            <div class="timer js-timer">
+                ${timer}
             </div>
 
         </div>
 
     </div>
         `
-    
-    // console.log(selected);
+    if(!setTimerInterval){
+        setTimerInterval =  setInterval(updateTimer,1000);
+    }
+
     document.body.innerHTML = activateQuizHTML;
     const submitButton = document.querySelector('.js-submit-answer-button');
     submitButton.addEventListener('click', () => {
         let selected = document.querySelector('input[name="options"]:checked');
-        // console.log(selected);
-        // console.log(question.correctAnswer);
         checkAnswer(selected,question);
         quizScreen();
 
     });
 
     }else{
+        
         document.body.innerHTML = `
-        ${answeredCorrectlyCounter}
-        game over
+        out of questions <br>
+        asnwered correctly: ${answeredCorrectlyCounter}
+
         `
+        clearInterval(setTimerInterval);
     }
 
 }
