@@ -6,7 +6,9 @@ const outOfQuestionsScreenn = document.querySelector('.js-out-of-questions-model
 const retryButtonQ = document.querySelector('.js-retry-button-questions');
 const retryButtonT = document.querySelector('.js-retry-button-time');
 const outOfTimeScreen = document.querySelector('.js-out-of-time-model');
+const timerSettings = document.querySelector('.js-timer');
 
+// all the question that can be answered in the quiz. 
 const questionsArray = [{
     title: 'Which planet has the most moons?',
     worngAnswers:['Mars', 'Jupiter', 'Pluto', 'Earth'],
@@ -33,10 +35,14 @@ let answeredCorrectlyCounter = 0;
 
 let setTimerInterval;
 
-let timer =  5;
+let timer = 59;
 
 let questionFunc;
 
+let highScore = JSON.parse(localStorage.getItem('highScore'));
+
+// this function randomize the order of the possible answers and making sure the correct answer
+// is always an option
 function setAnswersArray(){
     questionsArray.forEach(question => {
         question.answersArray = Array.from({ length: 4 }, () => '');
@@ -62,6 +68,7 @@ function setAnswersArray(){
     
 }
 
+// this function randomize the order of questions 
 function setQuestion() {
     let question;
     if(questionsArray.length === answeredQuestions.length){
@@ -78,6 +85,8 @@ function setQuestion() {
     return question;
 }
 
+// this function checking the player's answer to to see if it's correct
+// and changing the player's correct answered score accordingly
 function checkAnswer(answer, question){
     if(answer === null){
         return;
@@ -87,26 +96,47 @@ function checkAnswer(answer, question){
     }
 }
 
+// after the player pressed their answer, this function sending their answer to be 
+// checked and unchecking the answer
 function submitAnswer(question){
     let selectedAnswer = document.querySelector('input[name="options"]:checked').parentElement.children[1].innerHTML;
     checkAnswer(selectedAnswer,question);
+    document.querySelector('input[name="options"]:checked').checked = false;
     quiz();
     
 }
 
+
+// this function update the timer every second to go down by one.
+// when there are only 5 seconds left, the timer's set to red, bold and 
+// bigger in size.
+// when the timer hit zero, the 'out of time' screen appears and the quiz screen is hidden
 function updateTimer(){
     if(timer >= 0){
-        document.querySelector('.js-timer').innerHTML = timer;
+        timerSettings.innerHTML = timer;
         timer--;
+        
+        if(timer <= 4){
+            timerSettings.style.color = 'red';
+            timerSettings.style.fontSize = '100px';
+            timerSettings.style.fontWeight = 'bold';
+        }
     } else{
         quizScreenn.style.display = 'none';
         outOfTimeScreen.style.display = 'flex';
         outOfTimeScreen.style.flexDirection = 'column';
+
+        setHighScore(answeredCorrectlyCounter);
+
+
         document.querySelector('.js-answered-correctly-time').innerText = ` ${answeredCorrectlyCounter}`;
     }
     
 }
 
+// the answers keyboard inputs, 'ENTER' to submit the answer,
+// '1' for option one, '2' for option two, '3' for option three and
+// '4' for option four
 function keyboardInputs(event,keydown,question){
     if(keydown){
         return;
@@ -129,10 +159,15 @@ function keyboardInputs(event,keydown,question){
     }
 }
 
+// to resent the pushed key
 function resetKeydown(keydown){
     keydown = false;
 }
 
+// this function is when the RETRY buttons is pushed; that appears 
+// when the time/questions are out.
+// reappears the quiz screen and hide the 'out of time'/
+// 'out of questions' screen
 function retryButtonFunc(){
     quizScreenn.style.display = 'flex';
     outOfQuestionsScreenn.style.display = 'none';
@@ -145,12 +180,27 @@ function retryButtonFunc(){
     });
     setAnswersArray();
 
-    timer = 5;
-    document.querySelector('.js-timer').innerHTML = 60;
+    timer = 59;
+    timerSettings.style.color = 'black';
+    timerSettings.style.fontSize = '80px';
+    timerSettings.style.fontWeight = 'normal';
 
     quiz();
 }
 
+// setting the hifh score in local storage and chenging it if 
+// the high score is broken
+function setHighScore(score){
+    if(highScore === null || score > parseInt(highScore)){
+        localStorage.setItem('highScore', JSON.stringify(score));
+    }
+
+}
+
+
+// this function get a question and it's answers, activate the timer
+// and if there are no more questions the 'out of questions'
+// screen appears and the quiz screen hidden
 function quiz(){
     let question = setQuestion();
 
@@ -178,18 +228,16 @@ function quiz(){
         outOfQuestionsScreenn.style.flexDirection = 'column';
         document.querySelector('.js-answered-correctly-questions').innerText = ` ${answeredCorrectlyCounter}`;
 
+        setHighScore(answeredCorrectlyCounter);
+
         clearInterval(setTimerInterval);
- 
-        // if(localStorage){
-        //     localStorage.setItem('highScore', answeredCorrectlyCounter);
-        // }
-        // console.log(answeredCorrectlyCounter);
+
     }
 }
 
-
+// this function activate when the START button is preesed;
+// hidding the starting screen and showimg the quiz screen
 function startQuiz(){
-    // quizScreenn.style.dispaly = 'dsf';
     quizScreenn.style.display = 'flex';
     startingScreen.style.display = 'none';
     setAnswersArray();
@@ -216,5 +264,8 @@ document.addEventListener('keyup',() =>{
 retryButtonQ.addEventListener('click', retryButtonFunc);
 retryButtonT.addEventListener('click', retryButtonFunc);
 
+document.querySelector('.js-high-score').innerText = `
+${highScore} correct question(s)!
+`;
 
 

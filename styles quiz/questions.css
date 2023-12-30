@@ -112,8 +112,8 @@
 
 @media(max-width:750px){
     .quiz-container{
-        background-color: lightpink;
-        display: flex;
+        /* background-color: lightpink; */
+        display: none;
         flex-direction: column-reverse;
         align-items: center;
     }
