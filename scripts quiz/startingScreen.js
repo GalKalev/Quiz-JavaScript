@@ -1,3 +1,5 @@
+import {questionsArray} from './questionArray.js';
+
 const startButton = document.querySelector('.js-start-button');
 const quizScreenn = document.querySelector('.quiz-container');
 const startingScreen = document.querySelector('.starting-screen-container');
@@ -8,24 +10,6 @@ const retryButtonT = document.querySelector('.js-retry-button-time');
 const outOfTimeScreen = document.querySelector('.js-out-of-time-model');
 const timerSettings = document.querySelector('.js-timer');
 
-// all the question that can be answered in the quiz. 
-const questionsArray = [{
-    title: 'Which planet has the most moons?',
-    worngAnswers:['Mars', 'Jupiter', 'Pluto', 'Earth'],
-    correctAnswer: 'Saturn',
-    answersArray: []
-    
-}, {
-    title: 'What color is Sonic the Hedgehog?',
-    worngAnswers:['Red', 'Green', 'Orange', 'Brown'],
-    correctAnswer:'Blue',
-    answersArray: []
-},{
-    title: 'How many bones do we have in one ear?',
-    worngAnswers:['5', '2', '9', '0'],
-    correctAnswer:'3',
-    answersArray: [] 
-}];
 
 let quizHTML = '';
 
@@ -35,7 +19,7 @@ let answeredCorrectlyCounter = 0;
 
 let setTimerInterval;
 
-let timer = 59;
+let timer = 29;
 
 let questionFunc;
 
@@ -94,6 +78,7 @@ function checkAnswer(answer, question){
     if(answer === question.correctAnswer){
         answeredCorrectlyCounter++;
     }
+    console.log('checkAnswer');
 }
 
 // after the player pressed their answer, this function sending their answer to be 
@@ -102,6 +87,7 @@ function submitAnswer(question){
     let selectedAnswer = document.querySelector('input[name="options"]:checked').parentElement.children[1].innerHTML;
     checkAnswer(selectedAnswer,question);
     document.querySelector('input[name="options"]:checked').checked = false;
+    console.log('submitAnswer');
     quiz();
     
 }
@@ -167,7 +153,7 @@ function resetKeydown(keydown){
 // this function is when the RETRY buttons is pushed; that appears 
 // when the time/questions are out.
 // reappears the quiz screen and hide the 'out of time'/
-// 'out of questions' screen
+// 'out of questions' screen adn reset the timer
 function retryButtonFunc(){
     quizScreenn.style.display = 'flex';
     outOfQuestionsScreenn.style.display = 'none';
@@ -180,7 +166,7 @@ function retryButtonFunc(){
     });
     setAnswersArray();
 
-    timer = 59;
+    timer = 29;
     timerSettings.style.color = 'black';
     timerSettings.style.fontSize = '80px';
     timerSettings.style.fontWeight = 'normal';
@@ -198,15 +184,13 @@ function setHighScore(score){
 }
 
 
-// this function get a question and it's answers, activate the timer
+// this function get a question and it's answers
 // and if there are no more questions the 'out of questions'
 // screen appears and the quiz screen hidden
 function quiz(){
     let question = setQuestion();
-
     if(question){
         document.querySelector('.question-title').innerText = question.title;
-
         document.getElementById('js-1').innerText = question.answersArray[0];
         document.getElementById('js-2').innerText = question.answersArray[1];
         document.getElementById('js-3').innerText = question.answersArray[2];
@@ -215,12 +199,6 @@ function quiz(){
         questionFunc = question;
     }
 
-    if(!setTimerInterval){
-        setTimerInterval =  setInterval(updateTimer,1000);
-    } else{
-        clearInterval(setTimerInterval);
-        setTimerInterval =  setInterval(updateTimer,1000);
-    }
 
     if(question === undefined){
         quizScreenn.style.display = 'none';
@@ -235,13 +213,20 @@ function quiz(){
     }
 }
 
-// this function activate when the START button is preesed;
+// this function activate when the START button is preesed; activate the timer
 // hidding the starting screen and showimg the quiz screen
 function startQuiz(){
     quizScreenn.style.display = 'flex';
     startingScreen.style.display = 'none';
     setAnswersArray();
+   
     quiz();
+    if(!setTimerInterval){
+        setTimerInterval =  setInterval(updateTimer,1000);
+    } else{
+        clearInterval(setTimerInterval);
+        setTimerInterval =  setInterval(updateTimer,1000);
+    }
 
 }
 
