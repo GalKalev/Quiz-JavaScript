@@ -1,4 +1,4 @@
-import {questionsArray} from './questionArray.js';
+import {questionsArray} from './questionsArray.js';
 
 const startButton = document.querySelector('.js-start-button');
 const quizScreenn = document.querySelector('.quiz-container');
