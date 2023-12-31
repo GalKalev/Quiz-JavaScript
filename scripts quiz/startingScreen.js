@@ -249,8 +249,11 @@ document.addEventListener('keyup',() =>{
 retryButtonQ.addEventListener('click', retryButtonFunc);
 retryButtonT.addEventListener('click', retryButtonFunc);
 
-document.querySelector('.js-high-score').innerText = `
-${highScore} correct question(s)!
+if(highScore){
+    document.querySelector('.js-high-score').innerText = `
+    ${highScore} correct question(s)!
 `;
+}
+
 
 
