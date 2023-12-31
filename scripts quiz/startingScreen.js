@@ -78,7 +78,6 @@ function checkAnswer(answer, question){
     if(answer === question.correctAnswer){
         answeredCorrectlyCounter++;
     }
-    console.log('checkAnswer');
 }
 
 // after the player pressed their answer, this function sending their answer to be 
@@ -87,7 +86,6 @@ function submitAnswer(question){
     let selectedAnswer = document.querySelector('input[name="options"]:checked').parentElement.children[1].innerHTML;
     checkAnswer(selectedAnswer,question);
     document.querySelector('input[name="options"]:checked').checked = false;
-    console.log('submitAnswer');
     quiz();
     
 }
@@ -112,12 +110,26 @@ function updateTimer(){
         outOfTimeScreen.style.display = 'flex';
         outOfTimeScreen.style.flexDirection = 'column';
 
+        resetTimer();
+
         setHighScore(answeredCorrectlyCounter);
 
-
         document.querySelector('.js-answered-correctly-time').innerText = ` ${answeredCorrectlyCounter}`;
+
+        clearInterval(setTimerInterval);
+
+        
     }
     
+}
+
+// this function resets the timer when a new game starts
+function resetTimer(){
+    timer = 29;
+    timerSettings.innerHTML = 30;
+    timerSettings.style.color = 'black';
+    timerSettings.style.fontSize = '80px';
+    timerSettings.style.fontWeight = 'normal';
 }
 
 // the answers keyboard inputs, 'ENTER' to submit the answer,
@@ -165,11 +177,14 @@ function retryButtonFunc(){
         question.answersArray = [];
     });
     setAnswersArray();
+    
 
-    timer = 29;
-    timerSettings.style.color = 'black';
-    timerSettings.style.fontSize = '80px';
-    timerSettings.style.fontWeight = 'normal';
+    if(!setTimerInterval){
+        setTimerInterval =  setInterval(updateTimer,1000);
+    } else{
+        clearInterval(setTimerInterval);
+        setTimerInterval =  setInterval(updateTimer,1000);
+    }
 
     quiz();
 }
@@ -205,6 +220,8 @@ function quiz(){
         outOfQuestionsScreenn.style.display = 'flex';
         outOfQuestionsScreenn.style.flexDirection = 'column';
         document.querySelector('.js-answered-correctly-questions').innerText = ` ${answeredCorrectlyCounter}`;
+
+        resetTimer();
 
         setHighScore(answeredCorrectlyCounter);
 
@@ -254,6 +271,7 @@ if(highScore){
     ${highScore} correct question(s)!
 `;
 }
+
 
 
 
